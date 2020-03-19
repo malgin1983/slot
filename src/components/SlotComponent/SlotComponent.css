@@ -1,0 +1,9 @@
+.slot-component__container {
+  max-width: 688px;
+  background-color: #e5eef0;
+  border-radius: 13px;
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  -ms-border-radius: 13px;
+  -o-border-radius: 13px;
+}

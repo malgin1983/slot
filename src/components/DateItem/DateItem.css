@@ -1,0 +1,16 @@
+.date-item__container-active {
+  position: relative;
+  border-radius: 13px;
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  -ms-border-radius: 13px;
+  -o-border-radius: 13px;
+  background-color: #e5eef0;
+  border: 1px solid black;
+  background-color: #aed2c6;
+  font-weight: bold;
+  padding: 8px 29px 16px 18px;
+}
+.date-item__list {
+  list-style: none;
+}

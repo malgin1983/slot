@@ -1,0 +1,9 @@
+.slot-header-component__container {
+  display: flex;
+  padding: 16px 16px 16px 17px;
+  justify-content: space-between;
+  align-items: center;
+}
+.slot-header-component__text {
+  font-weight: bold;
+}

@@ -1,0 +1,8 @@
+{
+  "printWidth": 80,
+  "singleQuote": false,
+  "trailingComma": "es5",
+  "tabWidth": 2,
+  "semi": true,
+  "eslint.autoFixOnSave": false
+}
