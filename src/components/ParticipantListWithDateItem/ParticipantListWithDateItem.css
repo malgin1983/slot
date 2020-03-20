@@ -1,3 +1,10 @@
+.participant-list {
+  padding: 0 16px 23px 16px;
+}
 .participant-list__container {
   display: flex;
+  margin-top: 16px;
+}
+.paticipant-list__container-item {
+  margin-left: 18px;
 }

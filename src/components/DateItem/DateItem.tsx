@@ -2,15 +2,25 @@ import React from "react";
 import "./DateItem.css";
 import Radio from "@material-ui/core/Radio";
 import { withStyles } from "@material-ui/core/styles";
-
 import { RadioProps } from "@material-ui/core/Radio";
+import { IDateItem } from "../ParticipantListWithDateItem/ParticipantListWithDateItem";
 
-const DateItem: React.FC = () => {
+interface DateItemProps {
+  active: boolean;
+  data: IDateItem;
+}
+
+const DateItem: React.FC<DateItemProps> = props => {
+  const { active, data } = props;
+  let classItem;
+  active
+    ? (classItem = "date-item__container-active")
+    : (classItem = "date-item__container");
   const DateItemRadio = withStyles({
     root: {
       position: "absolute",
-      left: "15px",
-      top: "14px",
+      left: "8px",
+      top: "1px",
     },
   })((props: RadioProps) => <Radio color="default" {...props} />);
 
@@ -20,7 +30,7 @@ const DateItem: React.FC = () => {
     setSelectedValue(event.target.value);
   };
   return (
-    <div className={"date-item__container-active"}>
+    <div className={classItem}>
       <DateItemRadio
         checked={selectedValue === "d"}
         size="medium"
@@ -31,9 +41,9 @@ const DateItem: React.FC = () => {
         inputProps={{ "aria-label": "D" }}
       />
       <ul className={"date-item__list"}>
-        <li className={"date-item__list-item"}>{"Сегодня. Понедельник"}</li>
-        <li className={"date-item__list-item"}>{"24 Января"}</li>
-        <li className={"date-item__list-item"}>{"13:00 -14:00"}</li>
+        <li className={"date-item__list-item"}>{data.date}</li>
+        <li className={"date-item__list-item"}>{data.day}</li>
+        <li className={"date-item__list-item"}>{data.time}</li>
       </ul>
     </div>
   );

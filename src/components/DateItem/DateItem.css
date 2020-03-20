@@ -9,8 +9,20 @@
   border: 1px solid black;
   background-color: #aed2c6;
   font-weight: bold;
-  padding: 8px 29px 16px 18px;
+  padding: 8px 29px 16px 48px;
+}
+.date-item__container {
+  position: relative;
+  border-radius: 13px;
+  -webkit-border-radius: 13px;
+  -moz-border-radius: 13px;
+  -ms-border-radius: 13px;
+  -o-border-radius: 13px;
+  background-color: #ffffff;
+  padding: 8px 29px 16px 48px;
 }
 .date-item__list {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
