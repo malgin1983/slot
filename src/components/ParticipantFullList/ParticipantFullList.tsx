@@ -14,11 +14,11 @@ interface ParticipantColumnList {
 const ParticipantColumnList: React.FC<ParticipantColumnList> = props => {
   const { participants } = props;
   return (
-    <ul className={"participal-full-list__container"}>
+    <ul className={"participal-column-list__container"}>
       {participants.map((item, idx) => {
         return (
-          <li key={idx} className={"participal-full-list__container-item"}>
-            <ParticipantItem name={item} showAllName={true} />
+          <li key={idx} className={"participal-column-list__container-item"}>
+            <ParticipantItem name={item} showAllName={false} />
           </li>
         );
       })}

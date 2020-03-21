@@ -60,7 +60,9 @@ const ParticipantListWithDateItem: React.FC = () => {
     <div className={"participant-list"}>
       <div>
         Выбранное время:{" "}
-        <span>{`не ${toBeAble} ${total} участни${absent(total)}`}</span>{" "}
+        <span
+          className={"participant-list-item"}
+        >{`не ${toBeAble} ${total} участни${absent(total)}`}</span>{" "}
       </div>
       <div className={"participant-list__container"}>
         <DateItem active={true} data={data} />
