@@ -19,7 +19,7 @@ const DateItem: React.FC<DateItemProps> = props => {
   const DateItemRadio = withStyles({
     root: {
       position: "absolute",
-      left: "8px",
+      left: "4px",
       top: "1px",
     },
   })((props: RadioProps) => <Radio color="default" {...props} />);
@@ -41,8 +41,8 @@ const DateItem: React.FC<DateItemProps> = props => {
         inputProps={{ "aria-label": "D" }}
       />
       <ul className={"date-item__list"}>
-        <li className={"date-item__list-item"}>{data.date}</li>
         <li className={"date-item__list-item"}>{data.day}</li>
+        <li className={"date-item__list-item"}>{data.date}</li>
         <li className={"date-item__list-item"}>{data.time}</li>
       </ul>
     </div>

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import DateItem from "../DateItem/DateItem";
-import ParticipantItem from "../ParticipantItem/ParticipantItem";
 import "./ParticipantListWithDateItem.css";
+import ParticipantListItem from "../ParticipantListItem/ParticipantListItem";
+import ParticipantFullList from "../ParticipantFullList/ParticipantFullList";
 
 export interface IDateItem {
   day: string;
@@ -13,17 +14,71 @@ const data: IDateItem = {
   date: "24 Января",
   time: "13:00 -14:00",
 };
+export type ParticipantsType = Array<string>;
+const participants: ParticipantsType = [
+  "Баканова Е.Ю.",
+  "Константинопольский Е.К.",
+  "Константинопольский Е.К.",
+  "Константинопольский Е.К.",
+  "Баканова Е.Ю.",
+  "Константинопольский Е.К.",
+  "Константинопольский Е.К.",
+  "Баканова Е.Ю.",
+  "Константинопольский Е.К.",
+  "Константинопольский Е.К.",
+  "Баканова Е.Ю.",
+  "Константинопольский Е.К.",
+  "Константинопольский Е.К.",
+  "Баканова Е.Ю.",
+  "Константинопольский Е.К.",
+];
+const total: number = 5;
+const absent = (total: number): string => {
+  switch (total) {
+    case 1:
+      return "к";
+      break;
+    case 2:
+      return "ка";
+      break;
+    case 3:
+      return "ка";
+      break;
+    case 4:
+      return "ка";
+      break;
+    default:
+      return "ков";
+  }
+};
+
+let toBeAble = total > 1 ? "могут" : "может ";
 
 const ParticipantListWithDateItem: React.FC = () => {
+  const [show, setShow] = useState<boolean>(true);
   return (
     <div className={"participant-list"}>
-      <div>Выбранное время: не могут 10 участников</div>
+      <div>
+        Выбранное время:{" "}
+        <span>{`не ${toBeAble} ${total} участни${absent(total)}`}</span>{" "}
+      </div>
       <div className={"participant-list__container"}>
         <DateItem active={true} data={data} />
-        <div className={"paticipant-list__container-item"}>
-          <ParticipantItem />
-        </div>
+        {show ? (
+          <ParticipantListItem
+            participants={participants}
+            setShow={setShow}
+            show={show}
+          />
+        ) : null}
       </div>
+      {show ? null : (
+        <ParticipantFullList
+          participants={participants}
+          setShow={setShow}
+          show={show}
+        />
+      )}
     </div>
   );
 };
