@@ -1,5 +1,5 @@
 .slider-data-items {
-  padding: 16px 16px 18px 16px;
+  padding: 0px 16px 0px 16px;
   position: relative;
 }
 .slider-data-items__container {
@@ -8,7 +8,10 @@
   padding: 0;
   display: flex;
   list-style: none;
-  overflow-x: scroll;
+  overflow-x: auto;
+}
+.slider-data-items__container::-webkit-scrollbar {
+  display: none;
 }
 .slider-data-items__container-item {
   width: 240px;
