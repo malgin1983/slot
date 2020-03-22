@@ -12,10 +12,11 @@ export interface IDateItem {
 interface SliderDateItemsProps {
   dataSlider: IDateItem[];
 }
-
+// Компонент
 const SliderDateItems: React.FC<SliderDateItemsProps> = props => {
   const { dataSlider } = props;
   const item = dataSlider[0];
+
   let header: string;
   item.hasOwnProperty("participants")
     ? (header = "Не все могут участвоват")
