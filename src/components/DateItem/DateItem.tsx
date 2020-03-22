@@ -12,6 +12,9 @@ interface DateItemProps {
 
 const DateItem: React.FC<DateItemProps> = props => {
   const { active, data } = props;
+  let cheked: string = "";
+  active ? (cheked = "d") : (cheked = "a");
+
   let classItem;
   active
     ? (classItem = "date-item__container-active")
@@ -24,7 +27,7 @@ const DateItem: React.FC<DateItemProps> = props => {
     },
   })((props: RadioProps) => <Radio color="default" {...props} />);
 
-  const [selectedValue, setSelectedValue] = React.useState("d");
+  const [selectedValue, setSelectedValue] = React.useState(cheked);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedValue(event.target.value);
