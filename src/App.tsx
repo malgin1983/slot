@@ -1,5 +1,5 @@
 import React from "react";
-import PageSlot from "./pages/SlotPage/PageSlot";
+import PageSlot from "./pages/PageSlot/PageSlot";
 
 const App: React.FC = () => {
   return (
