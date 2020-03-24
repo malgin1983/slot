@@ -1,19 +1,21 @@
-.slider-button__container {
-  width: 79px;
-  height: 34px;
-  border-radius: 17px;
-  -webkit-border-radius: 17px;
-  -moz-border-radius: 17px;
-  -ms-border-radius: 17px;
-  -o-border-radius: 17px;
-  border: 1px solid #cccccc;
-  background-color: #ffffff;
-  position: absolute;
-  z-index: 1;
-  top: 60px;
-  right: 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
+.slider-button {
+    width: 79px;
+    height: 34px;
+    border-radius: 17px;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    position: absolute;
+    z-index: 1;
+    top: 60px;
+    right: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.slider-button__left {
+    padding-top: 3px;
+}
+.slider-button__right {
+    padding-top: 3px;
 }

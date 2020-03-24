@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
 import './SliderDateItems.css';
 import DateItem from '../DateItem/DateItem';
 import ParticipantItem from '../ParticipantItem/ParticipantItem';
 import SliderButton from '../SliderButton/SliderButton';
+
 export interface IDateItem {
     day: string;
     date: string;
@@ -16,48 +17,57 @@ interface SliderDateItemsProps {
 const SliderDateItems: React.FC<SliderDateItemsProps> = props => {
     const { dataSlider } = props;
     const item = dataSlider[0];
-    const scrollToRef = (ref: any) => window.scrollTo(0, ref.current.offsetLeft);
-    const myRef = useRef(null);
-    const executeScroll = () => scrollToRef(myRef);
+    const MyRef = useRef<any>();
+
+    useEffect(() => {
+        MyRef.current.scrollLeft = 0;
+    }, []);
+
+    const leftScroll = () => {
+        MyRef.current.scrollLeft += 50;
+    };
+    const rightScroll = () => {
+        MyRef.current.scrollLeft -= 50;
+    };
+
     let header: string;
-    item.hasOwnProperty('participants') ? (header = 'Не все могут участвоват') : (header = 'Все могут участвовать');
+
+    item.participants ? (header = 'Не все могут участвоват') : (header = 'Все могут участвовать');
 
     return (
         <div className={'slider-data-items'}>
-            <SliderButton />
-            <div className={'slider-data-items__header'} ref={myRef}>
-                {header}
+            <div className={'slider-data-items__header'}>{header}</div>
+            <div className={'slider-data-items__wrapper'}>
+                <SliderButton leftScroll={leftScroll} rightScroll={rightScroll} />
+                <ul className={'slider-data-items__container'} ref={MyRef}>
+                    {dataSlider.map((item, idx) => {
+                        const { participants, ...data } = item;
+                        if (participants) {
+                            let name = participants[0];
+                            return (
+                                <li className={'slider-data-items__container-item'} key={idx}>
+                                    <DateItem active={false} data={data} />
+                                    <div className={'slider-data-items__footer'}>
+                                        <span className={'slider-data-items__footer-item-component'}>
+                                            <ParticipantItem name={name} showAllName={true} />
+                                        </span>
+                                        <span
+                                            className={'slider-data-items__footer-item'}
+                                        >{`и еще ${participants?.length}`}</span>
+                                    </div>
+                                </li>
+                            );
+                        } else {
+                            return (
+                                <li className={'slider-data-items__container-item'} key={idx}>
+                                    <DateItem active={false} data={data} />
+                                    <div className={'slider-data-items__container-item-empty'}></div>
+                                </li>
+                            );
+                        }
+                    })}
+                </ul>
             </div>
-            <button onClick={executeScroll}>Лево</button>
-            <button>Право</button>
-            <ul className={'slider-data-items__container'}>
-                {dataSlider.map((item, idx) => {
-                    const { participants, ...data } = item;
-                    if (participants) {
-                        let name = participants[0];
-                        return (
-                            <li className={'slider-data-items__container-item'} key={idx}>
-                                <DateItem active={false} data={data} />
-                                <div className={'slider-data-items__footer'}>
-                                    <span className={'slider-data-items__footer-item-component'}>
-                                        <ParticipantItem name={name} showAllName={true} />
-                                    </span>
-                                    <span
-                                        className={'slider-data-items__footer-item'}
-                                    >{`и еще ${participants?.length}`}</span>
-                                </div>
-                            </li>
-                        );
-                    } else {
-                        return (
-                            <li className={'slider-data-items__container-item'} key={idx}>
-                                <DateItem active={false} data={data} />
-                                <div className={'slider-data-items__container-item-empty'}></div>
-                            </li>
-                        );
-                    }
-                })}
-            </ul>
         </div>
     );
 };
