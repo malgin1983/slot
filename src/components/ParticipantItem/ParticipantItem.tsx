@@ -6,6 +6,12 @@ interface ParticipantItemProps {
     name: string;
     showAllName: boolean;
 }
+/**
+ * @ParticipantItem отображает имя участника
+ * @param props.showAllName - boolean - флаг для проведения проверки и корректировки длины имени.
+ * Если имя участника больше 17 символов, выводит укороченный вариант имени, с "..." на конце
+ * @param props.name - имя участника.
+ */
 
 const ParticipantItem: React.FC<ParticipantItemProps> = props => {
     const { name, showAllName } = props;
@@ -17,9 +23,9 @@ const ParticipantItem: React.FC<ParticipantItemProps> = props => {
     }
 
     return (
-        <div className={'participal-item__container'}>
-            <HighlightOffIcon className={'participal-item__container-icon'} />
-            <div className={'participal-item__container-name'}>{reductName}</div>
+        <div className={'participant-item__container'}>
+            <HighlightOffIcon className={'participant-item__container--icon'} />
+            <div className={'participant-item__container--name'}>{reductName}</div>
         </div>
     );
 };

@@ -45,7 +45,10 @@ const dataSlider: IDateItem[] = [
         participants: ['Баканова Е.Ю.', 'Константинопольский Е.К.', 'Константинопольский Е.К.'],
     },
 ];
-
+/**
+ * @SliderWrapper - обертка для Slider
+ * Отображает кол-во участников, также выводит контейнер - @DateItem и @ParticipantListItem
+ */
 const SliderWrapper: React.FC = () => {
     return <SliderDateItems dataSlider={dataSlider} />;
 };

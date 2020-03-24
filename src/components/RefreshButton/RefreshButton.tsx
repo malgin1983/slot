@@ -6,9 +6,15 @@ import { withStyles } from '@material-ui/core/styles';
 interface RefreshButtonProps {
     color: string;
     buttonText: string;
-    onHeandelClick?: () => void;
+    onHandleClick?: () => void;
 }
-
+/**
+ * @RefreshButton - компонента кнопка Refresh
+ * Отображает кол-во участников, также выводит контейнер - @DateItem и @ParticipantListItem
+ *@param props.color - цвет элементов и значка.
+ *@param props.buttonText - текст кнопки.
+ *@param props.onHandleClick - callBack function
+ */
 const RefreshButton: React.FC<RefreshButtonProps> = props => {
     const { color, buttonText } = props;
     const RefreshButton = withStyles({
@@ -17,12 +23,10 @@ const RefreshButton: React.FC<RefreshButtonProps> = props => {
             padding: '9px 36px 9px 13px',
         },
     })(Button);
-    const onHeandelClick = () => {
-        console.log('Click');
-    };
+    const onHandleClick = () => {};
     return (
         <div>
-            <RefreshButton variant="outlined" startIcon={<RefreshIcon />} onClick={onHeandelClick}>
+            <RefreshButton variant="outlined" startIcon={<RefreshIcon />} onClick={onHandleClick}>
                 {buttonText}
             </RefreshButton>
         </div>

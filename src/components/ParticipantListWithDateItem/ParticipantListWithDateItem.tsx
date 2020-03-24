@@ -51,8 +51,13 @@ const absent = (total: number): string => {
             return 'ков';
     }
 };
-
 let toBeAble = total > 1 ? 'могут' : 'может ';
+
+/**
+ * @ParticipantListWithDateItem UI - контейнерная компонента
+ * Отображает кол-во участников, также выводит контейнер - @DateItem и @ParticipantListItem
+ * или ParticipantFullList
+ */
 
 const ParticipantListWithDateItem: React.FC = () => {
     const [show, setShow] = useState<boolean>(true);
@@ -60,7 +65,7 @@ const ParticipantListWithDateItem: React.FC = () => {
         <div className={'participant-list'}>
             <div>
                 Выбранное время:{' '}
-                <span className={'participant-list-item'}>{`не ${toBeAble} ${total} участни${absent(total)}`}</span>{' '}
+                <span className={'participant-list__item'}>{`не ${toBeAble} ${total} участни${absent(total)}`}</span>{' '}
             </div>
             <div className={'participant-list__container'}>
                 <DateItem active={true} data={data} />

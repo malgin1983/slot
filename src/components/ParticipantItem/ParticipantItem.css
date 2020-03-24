@@ -1,16 +1,16 @@
-.participal-item__container {
-  display: flex;
-  align-items: center;
-  width: 100%;
+.participant-item__container {
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
-.participal-item__container-name {
-  margin-left: 5px;
+.participant-item__container--name {
+    margin-left: 5px;
 }
-.participal-item__container-icon {
-  color: #b55d03;
+.participant-item__container--icon {
+    color: #b55d03;
 }
-.participal-column-list__container {
-  display: flex;
-  align-items: center;
-  width: 100%;
+.participant-column-list__container {
+    display: flex;
+    align-items: center;
+    width: 100%;
 }

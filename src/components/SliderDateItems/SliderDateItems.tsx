@@ -31,9 +31,7 @@ const SliderDateItems: React.FC<SliderDateItemsProps> = props => {
     };
 
     let header: string;
-
     item.participants ? (header = 'Не все могут участвоват') : (header = 'Все могут участвовать');
-
     return (
         <div className={'slider-data-items'}>
             <div className={'slider-data-items__header'}>{header}</div>

@@ -6,6 +6,11 @@ interface SliderButtonProps {
     leftScroll: () => void;
     rightScroll: () => void;
 }
+/**
+ * @SliderButton - кнопка скроллинга  слайдера
+ * @param props.leftScroll - функция левого скроллинга
+ * @param props.rightScroll - функция правого скроллинга
+ */
 const SliderButton: React.FC<SliderButtonProps> = props => {
     const { leftScroll, rightScroll } = props;
     return (

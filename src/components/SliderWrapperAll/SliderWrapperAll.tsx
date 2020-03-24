@@ -34,7 +34,10 @@ const dataSlider: IDateItem[] = [
         time: '13:00 -14:00',
     },
 ];
-
+/**
+ * @SliderWrapperAll - обертка для Slider
+ * Отображает кол-во участников, также выводит контейнер - @DateItem и @ParticipantListItem
+ */
 const SliderWrapperAll: React.FC = () => {
     return <SliderDateItems dataSlider={dataSlider} />;
 };
