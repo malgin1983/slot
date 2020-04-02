@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import * as React from 'react';
+import { useState } from 'react';
 import DateItem from '../DateItem/DateItem';
 import './ParticipantListWithDateItem.css';
 import ParticipantListItem from '../ParticipantListItem/ParticipantListItem';

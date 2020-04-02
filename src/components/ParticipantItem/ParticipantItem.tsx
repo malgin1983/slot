@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import './ParticipantItem.css';
 

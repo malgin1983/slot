@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import SliderDateItems from '../SliderDateItems/SliderDateItems';
 
 export interface IDateItem {
@@ -45,12 +45,14 @@ const dataSlider: IDateItem[] = [
         participants: ['Баканова Е.Ю.', 'Константинопольский Е.К.', 'Константинопольский Е.К.'],
     },
 ];
+const showScroll: boolean = false;
 /**
  * @SliderWrapper - обертка для Slider
- * Отображает кол-во участников, также выводит контейнер - @DateItem и @ParticipantListItem
+ * @param props.dataSlider - данные для items слайдера
+ * @param props.showScroll - флаг для отображения скролла в контейнере
  */
 const SliderWrapper: React.FC = () => {
-    return <SliderDateItems dataSlider={dataSlider} />;
+    return <SliderDateItems dataSlider={dataSlider} showScroll={showScroll} />;
 };
 
 export default SliderWrapper;

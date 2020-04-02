@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import './DateItem.css';
 import Radio from '@material-ui/core/Radio';
 import { withStyles } from '@material-ui/core/styles';
@@ -18,8 +18,8 @@ interface DateItemProps {
  */
 const DateItem: React.FC<DateItemProps> = props => {
     const { active, data } = props;
-    let cheked: string = '';
-    active ? (cheked = 'd') : (cheked = 'a');
+    // let cheked = '';
+    // active ? (cheked = 'd') : (cheked = 'a');
 
     let classItem;
     active ? (classItem = 'date-item__container--active') : (classItem = 'date-item__container');
@@ -27,23 +27,23 @@ const DateItem: React.FC<DateItemProps> = props => {
         root: {
             position: 'absolute',
             left: '4px',
-            top: '1px',
+            top: '-1px',
         },
     })((props: RadioProps) => <Radio color="default" {...props} />);
 
-    const [selectedValue, setSelectedValue] = React.useState(cheked);
+    const [selectedValue, setSelectedValue] = React.useState('');
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedValue(event.target.value);
     };
+    let keyChange: string = `${data.date}`;
     return (
         <div className={classItem}>
             <DateItemRadio
-                checked={selectedValue === 'd'}
-                size="medium"
+                checked={selectedValue === keyChange}
+                size="small"
                 onChange={handleChange}
-                value="d"
-                color="default"
+                value={`${data.date}`}
                 name="radio-button-demo"
                 inputProps={{ 'aria-label': 'D' }}
             />

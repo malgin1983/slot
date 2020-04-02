@@ -8,12 +8,12 @@
 }
 .participant-column-list__container--item {
     width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
 }
 .participant-full-list__container--switch {
-    margin-left: 350px;
+    margin-left: 357px;
     color: #b55d03;
-    margin-top: 20px;
+    margin-top: 8px;
     cursor: pointer;
 }
 .participant-full-list__wrapper {

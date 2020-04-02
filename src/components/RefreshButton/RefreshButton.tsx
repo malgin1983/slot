@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import Button from '@material-ui/core/Button';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import { withStyles } from '@material-ui/core/styles';
@@ -20,13 +20,13 @@ const RefreshButton: React.FC<RefreshButtonProps> = props => {
     const RefreshButton = withStyles({
         root: {
             color: color,
-            padding: '9px 36px 9px 13px',
+            // padding: '9px 36px 9px 13px',
         },
     })(Button);
     const onHandleClick = () => {};
     return (
-        <div>
-            <RefreshButton variant="outlined" startIcon={<RefreshIcon />} onClick={onHandleClick}>
+        <div className={'refresh-button'}>
+            <RefreshButton size={'small'} variant={'outlined'} startIcon={<RefreshIcon />} onClick={onHandleClick}>
                 {buttonText}
             </RefreshButton>
         </div>

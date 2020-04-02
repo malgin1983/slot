@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import ParticipantItem from '../ParticipantItem/ParticipantItem';
 import './ParticipantListItem.css';
 

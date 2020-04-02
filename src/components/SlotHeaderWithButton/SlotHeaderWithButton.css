@@ -1,6 +1,6 @@
 .slot-header-component__container {
   display: flex;
-  padding: 16px 16px 16px 17px;
+  padding: 16px;
   justify-content: space-between;
   align-items: center;
 }

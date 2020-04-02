@@ -1,4 +1,5 @@
-import React, { useRef, useEffect } from 'react';
+import * as React from 'react';
+import { useRef, useEffect } from 'react';
 import './SliderDateItems.css';
 import DateItem from '../DateItem/DateItem';
 import ParticipantItem from '../ParticipantItem/ParticipantItem';
@@ -12,10 +13,18 @@ export interface IDateItem {
 }
 interface SliderDateItemsProps {
     dataSlider: IDateItem[];
+    showScroll?: boolean;
 }
-// Компонент
+/**
+ * @SliderDateItems - слайдер компонентов @DateItem
+ * @param props.dataSlider -  массив данных для IDateItems
+ */
 const SliderDateItems: React.FC<SliderDateItemsProps> = props => {
-    const { dataSlider } = props;
+    const { dataSlider, showScroll } = props;
+    let showScrollLine: string;
+    showScroll
+        ? (showScrollLine = 'slider-data-items__container--scroll')
+        : (showScrollLine = 'slider-data-items__container');
     const item = dataSlider[0];
     const MyRef = useRef<any>();
 
@@ -24,20 +33,36 @@ const SliderDateItems: React.FC<SliderDateItemsProps> = props => {
     }, []);
 
     const leftScroll = () => {
-        MyRef.current.scrollLeft += 50;
+        setTimeout(() => {
+            MyRef.current.scrollLeft -= 80;
+        }, 200);
+        setTimeout(() => {
+            MyRef.current.scrollLeft -= 160;
+        }, 350);
+        setTimeout(() => {
+            MyRef.current.scrollLeft -= 240;
+        }, 500);
     };
     const rightScroll = () => {
-        MyRef.current.scrollLeft -= 50;
+        setTimeout(() => {
+            MyRef.current.scrollLeft += 80;
+        }, 200);
+        setTimeout(() => {
+            MyRef.current.scrollLeft += 160;
+        }, 350);
+        setTimeout(() => {
+            MyRef.current.scrollLeft += 240;
+        }, 500);
     };
 
     let header: string;
-    item.participants ? (header = 'Не все могут участвоват') : (header = 'Все могут участвовать');
+    item.participants ? (header = 'Не все могут участвовать') : (header = 'Все могут участвовать');
     return (
         <div className={'slider-data-items'}>
             <div className={'slider-data-items__header'}>{header}</div>
             <div className={'slider-data-items__wrapper'}>
                 <SliderButton leftScroll={leftScroll} rightScroll={rightScroll} />
-                <ul className={'slider-data-items__container'} ref={MyRef}>
+                <ul className={showScrollLine} ref={MyRef}>
                     {dataSlider.map((item, idx) => {
                         const { participants, ...data } = item;
                         if (participants) {

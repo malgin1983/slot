@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import './SlotComponent.css';
 import SlotHeaderWithButton from '../SlotHeaderWithButton/SlotHeaderWithButton';
 import ParticipantListWithDateItem from '../ParticipantListWithDateItem/ParticipantListWithDateItem';
