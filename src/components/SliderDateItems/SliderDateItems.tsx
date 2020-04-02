@@ -28,6 +28,8 @@ const SliderDateItems: React.FC<SliderDateItemsProps> = props => {
     const item = dataSlider[0];
     const MyRef = useRef<any>();
 
+    const [dateValue, setDateValue] = React.useState('');
+
     useEffect(() => {
         MyRef.current.scrollLeft = 0;
     }, []);
@@ -69,7 +71,12 @@ const SliderDateItems: React.FC<SliderDateItemsProps> = props => {
                             let name = participants[0];
                             return (
                                 <li className={'slider-data-items__container-item'} key={idx}>
-                                    <DateItem active={false} data={data} />
+                                    <DateItem
+                                        active={false}
+                                        data={data}
+                                        setSelectedValue={setDateValue}
+                                        dateValue={dateValue}
+                                    />
                                     <div className={'slider-data-items__footer'}>
                                         <span className={'slider-data-items__footer-item-component'}>
                                             <ParticipantItem name={name} showAllName={true} />
@@ -83,7 +90,12 @@ const SliderDateItems: React.FC<SliderDateItemsProps> = props => {
                         } else {
                             return (
                                 <li className={'slider-data-items__container-item'} key={idx}>
-                                    <DateItem active={false} data={data} />
+                                    <DateItem
+                                        active={false}
+                                        data={data}
+                                        setSelectedValue={setDateValue}
+                                        dateValue={dateValue}
+                                    />
                                     <div className={'slider-data-items__container-item-empty'}></div>
                                 </li>
                             );

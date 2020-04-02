@@ -8,21 +8,22 @@ import { IDateItem } from '../ParticipantListWithDateItem/ParticipantListWithDat
 interface DateItemProps {
     active: boolean;
     data: IDateItem;
+    setSelectedValue?: (dateValue: string) => void | undefined;
+    dateValue?: string;
 }
 /**
  * Компонента вывода даты и времени с радиокнопкой.
  * Имеет два состояния (активный / не активны) в зависимости от состояния меняется background и состояние радиокнопки
- * @param.props.active - состояние элемента
+ * @param.props.active - состояние элемента активно - радиокнопка в режиме checked, у элемента меняется класс.
  * @param.props.data -данные для отображения day- день, data- число, time- время
- * У радиокнопки есть два положения (вкл -"d"/выкл - "а"). Положение "d" устанавливается автоматически если @param.props.active - true
+ * @param.props.setSelectedValue - заносит в стейт значение, активной радиокнопки (@param.props.data.date).
+ * @param.props.dateValue - значение стейта из контейнерного компонента.(данные элемента с активной радиокнопкой).
  */
 const DateItem: React.FC<DateItemProps> = props => {
-    const { active, data } = props;
-    // let cheked = '';
-    // active ? (cheked = 'd') : (cheked = 'a');
+    const { active, data, setSelectedValue, dateValue } = props;
 
-    let classItem;
-    active ? (classItem = 'date-item__container--active') : (classItem = 'date-item__container');
+    let classItem: string = 'date-item__container';
+
     const DateItemRadio = withStyles({
         root: {
             position: 'absolute',
@@ -31,16 +32,34 @@ const DateItem: React.FC<DateItemProps> = props => {
         },
     })((props: RadioProps) => <Radio color="default" {...props} />);
 
-    const [selectedValue, setSelectedValue] = React.useState('');
-
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        //@ts-ignore
         setSelectedValue(event.target.value);
     };
-    let keyChange: string = `${data.date}`;
+    if (active) {
+        classItem = 'date-item__container--active';
+        return (
+            <div className={classItem}>
+                <DateItemRadio
+                    checked={true}
+                    size="small"
+                    onChange={handleChange}
+                    value={`${data.date}`}
+                    name="radio-button-demo"
+                    inputProps={{ 'aria-label': 'D' }}
+                />
+                <ul className={'date-item__list'}>
+                    <li className={'date-item__list--item'}>{data.day}</li>
+                    <li className={'date-item__list--item'}>{data.date}</li>
+                    <li className={'date-item__list--item'}>{data.time}</li>
+                </ul>
+            </div>
+        );
+    }
     return (
         <div className={classItem}>
             <DateItemRadio
-                checked={selectedValue === keyChange}
+                checked={dateValue === `${data.date}`}
                 size="small"
                 onChange={handleChange}
                 value={`${data.date}`}
